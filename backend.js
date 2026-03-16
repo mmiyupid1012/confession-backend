@@ -1,14 +1,12 @@
 import express from "express";
 import "dotenv/config";
-import path from "path";
-import { fileURLToPath } from "url";
 import rateLimit from "express-rate-limit";
 
 var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 var today  = new Date();
 
 const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL;
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 if (!DISCORD_WEBHOOK_URL || !port){
   throw new Error("Missing Discord Webhook or port in env");
@@ -20,27 +18,22 @@ const submitLimiter = rateLimit({
   standardHeaders: true,
   legacyHeaders: false,
   handler: (req, res) => {
-    res.redirect("/confessions.html?error=rate_limited");
+    res.redirect("https://mmiyupid1012.github.io/mmiyupid.github.io/confessions.html?error=rate_limited");
   }
 });
 
-const __filename = fileURLToPath(import.meta.url);
-
-const __dirname = path.dirname(__filename)
-const rootDir = path.resolve(__dirname, "..");
 
 const app = express()
 
 app.use(express.urlencoded({ extended: false }));
 
-app.use(express.static(rootDir));
 
 app.post("/submit", submitLimiter, async (req, res) =>{
   console.log("Received POST request");
   const {message} = req.body;
 
   if(!message){
-    return res.redirect("/confessions.html?error=missing");
+    return res.redirect("https://mmiyupid1012.github.io/mmiyupid.github.io/confessions.html?error=missing");
   };
 
   const payload={
@@ -67,10 +60,10 @@ app.post("/submit", submitLimiter, async (req, res) =>{
     }
 
   console.log("Sent to Discord");
-  return res.redirect("/confessions.html");
+  return res.redirect("https://mmiyupid1012.github.io/mmiyupid.github.io/confessions.html");
 
   }catch (err){
-    return res.redirect("/confessions.html?error=failed");
+    return res.redirect("https://mmiyupid1012.github.io/mmiyupid.github.io/confessions.html?error=failed");
   }
 });
 
