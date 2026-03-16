@@ -5,7 +5,7 @@ import rateLimit from "express-rate-limit";
 var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 var today  = new Date();
 
-const DISCORD_WEBHOOK_URL = DISCORD;
+const DISCORD_WEBHOOK_URL = process.env.DISCORD;
 const port = 8080;
 
 console.log("ENV CHECK:", {
