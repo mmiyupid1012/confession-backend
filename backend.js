@@ -6,7 +6,7 @@ var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' 
 var today  = new Date();
 
 const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL;
-const port = process.env.PORT || 3000;
+const port = 3000;
 
 if (!DISCORD_WEBHOOK_URL || !port){
   throw new Error("Missing Discord Webhook or port in env");
