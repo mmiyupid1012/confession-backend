@@ -6,7 +6,7 @@ var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' 
 var today  = new Date();
 
 const DISCORD_WEBHOOK_URL = process.env.DISCORD;
-const port = 8080;
+const port = process.env.PORT;
 
 console.log("ENV CHECK:", {
   webhook: !!DISCORD_WEBHOOK_URL,
