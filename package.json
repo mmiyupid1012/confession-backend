@@ -8,7 +8,7 @@
   "license": "ISC",
   "author": "miyuki",
   "type": "module",
-  "main": "index.js",
+  "main": "backend.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
