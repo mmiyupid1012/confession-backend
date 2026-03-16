@@ -8,6 +8,11 @@ var today  = new Date();
 const DISCORD_WEBHOOK_URL = process.env.DISCORD_WEBHOOK_URL;
 const port = 3000;
 
+console.log("ENV CHECK:", {
+  webhook: !!process.env.DISCORD_WEBHOOK_URL,
+  port: process.env.PORT
+});
+
 if (!DISCORD_WEBHOOK_URL || !port){
   throw new Error("Missing Discord Webhook or port in env");
 }
