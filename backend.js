@@ -18,8 +18,8 @@ if (!DISCORD_WEBHOOK_URL || !port){
 }
 
 const submitLimiter = rateLimit({
-  windowMs: 60 * 1000, // 1 minute
-  max: 2,             // 5 requests per window
+  windowMs: 5 * 60 * 60 * 1000, // 1 minute
+  max: 2,             // 2 requests per window
   standardHeaders: true,
   legacyHeaders: false,
   handler: (req, res) => {
